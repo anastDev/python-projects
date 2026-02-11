@@ -1,0 +1,13 @@
+date,brand,model,region,units_sold,price
+2024-01-05,Toyota,Corolla,Europe,120,22000
+2024-01-12,Toyota,Yaris,Europe,95,18000
+2024-01-20,BMW,3 Series,Europe,60,41000
+2024-02-03,BMW,X5,Europe,45,65000
+2024-02-10,Volkswagen,Golf,Europe,110,25000
+2024-02-18,Volkswagen,Polo,Europe,85,20000
+2024-03-02,Tesla,Model 3,Europe,70,48000
+2024-03-10,Tesla,Model Y,Europe,90,52000
+2024-03-18,Toyota,Corolla,USA,140,23000
+2024-03-25,BMW,3 Series,USA,75,42000
+2024-04-05,Volkswagen,Golf,USA,100,26000
+2024-04-12,Tesla,Model 3,USA,95,49000
