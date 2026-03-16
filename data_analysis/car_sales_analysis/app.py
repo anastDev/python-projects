@@ -1,4 +1,4 @@
-from scripts.analysis import *
+from data_analysis.car_sales_analysis.scripts.file_reader import *
 
 def main():
   print("\nOpening file...")
