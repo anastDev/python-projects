@@ -16,49 +16,38 @@ if __name__ == "__main__":
         df,
         titles=titles,
     )
-  
-  if result.empty:
+
+if result.empty:
     print("No jobs found with the current filters.")
-  else: 
+else: 
     print(f"{len(result)} matching jobs were found.\n")
 
-    print("Filters applied: \n")
+print("Filters applied: \n")
 
-    if titles: 
+if titles: 
       print(f" - Titles: {', '.join(titles)}")
 
-    if skills: 
+if skills: 
       print(f" - Skills: {', '.join(skills)}")
 
-    if locations:
+if locations:
       print(f" - Locations: {', '.join(locations)}")
-    print()
-    
-    print("\nResults:\n")
+print()
 
-    columns = [
-      "title", 
-      "company",
-      "location"
-    ]
+filtered = result[
+  (result["title"]== "Software Engineer") 
+  & (result["location"] != "United States")
+] 
 
-    widths = {
-      "title": max(result['title'].astype(str).apply(len).max(), len('title')),
-      "company_name": max(result['company_name'].astype(str).apply(len).max(), len('company_name')) + 2,
-      "location": max(result['location'].astype(str).apply(len).max(), len('location')) + 2,
-    }
+location_counts = filtered["location"].value_counts().head(10)
 
-    print(f"{"Title":<{widths['title']}} | {"Company":<{widths['company_name']}} | {"Location":<{widths['location']}}")
-    print("-" * 150)
-
-
-    for i, (_, row) in enumerate(result.reset_index().head(10).iterrows(), start=1):
-      print(
-        f"{i:<2} "
-        f"{row['title']:<{widths['title']}} | "
-        f"{row['company_name']:<{widths['company_name']}} | "
-        f"{row['location']:<{widths['location']}}"
-    )
+location_counts.plot(kind="bar",figsize=(12, 6), color="green")
+plt.title("Number of job posting for Software Engineer", fontweight="bold")
+plt.xlabel("Location", fontweight="bold")
+plt.ylabel("Number of postings", fontweight="bold")
+plt.xticks(rotation=45, ha="right")
+plt.savefig("postings_filtered.png")
+plt.show()
 
 skills_count = {}
 for skill in skills:
